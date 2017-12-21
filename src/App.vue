@@ -11,13 +11,16 @@
 </script>
 
 <style lang="less">
-  html, body{
+  html, body {
     height: 100%;
-    overflow:hidden;
+    /*overflow: hidden;*/
   }
 
   #app {
-    height: 100%;
+    /*background-color: #E9EAEC;*/
+    color: #333;
+    background-image: url("./assets/images/bg.jpg");
+    background-size: cover;
     /*清除浮动*/
     .clearfix {
       zoom: 1;
@@ -36,6 +39,29 @@
     }
     .fr {
       float: right;
+    }
+
+    .m_container {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .el-aside {
+      background-color: #D3DCE6;
+      color: #333;
+      text-align: center;
+      line-height: 200px;
+    }
+    .el-footer {
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+    }
+    .el-main {
+      background-color: #E9EEF3;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
     }
   }
 </style>
