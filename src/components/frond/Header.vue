@@ -5,13 +5,13 @@
         <img src="../../assets/images/nodeny.png" class="logo" alt="nodeny">
       </a>
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">Home</el-menu-item>
+        <el-menu-item index="index">Home</el-menu-item>
 
-        <el-menu-item index="2">Blog</el-menu-item>
+        <el-menu-item index="blog">Blog</el-menu-item>
 
-        <el-menu-item index="3">Images</el-menu-item>
+        <el-menu-item index="images">Images</el-menu-item>
 
-        <el-menu-item index="4">About</el-menu-item>
+        <el-menu-item index="about">About</el-menu-item>
       </el-menu>
       <div class="line"></div>
     </div>
@@ -29,6 +29,7 @@
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+        this.$router.push(key)
       }
     }
   }

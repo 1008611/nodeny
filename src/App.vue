@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <m-header></m-header>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import mHeader from './components/frond/Header.vue'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      mHeader,
+    },
   }
 </script>
 

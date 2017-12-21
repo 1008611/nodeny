@@ -6,6 +6,10 @@ import Index from '../pages/frond/index.vue'
 import Admin from '../pages/back/Admin.vue'
 import ArticleList from '../pages/back/ArticleList.vue'
 import ArticleEdit from '../pages/back/ArticleEdit.vue'
+
+import Blog from '../pages/frond/Blog.vue'
+import Images from '../pages/frond/Images.vue'
+import About from '../pages/frond/About.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +23,21 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: Blog
+    },
+    {
+      path: '/images',
+      name: 'images',
+      component: Images
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '/admin',

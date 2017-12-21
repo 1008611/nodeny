@@ -2,7 +2,7 @@
   <div class="index">
     <v-title>nodeny</v-title>
 
-    <m-header></m-header>
+
 
     <div class="m_container">
       <el-container class="mt30" >
@@ -24,7 +24,6 @@
 
 <script>
   import vTitle from '../../components/Title.vue'
-  import mHeader from '../../components/frond/Header.vue'
   import mEditor from '../../components/frond/Editor.vue'
   import api from '../../api/index'
 
@@ -32,7 +31,6 @@
     name: '',
     components: {
       vTitle,
-      mHeader,
       mEditor
     },
     data() {
