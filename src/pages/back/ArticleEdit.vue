@@ -6,12 +6,9 @@
       </el-form-item>
 
       <el-form-item label="文章内容">
-        <el-input type="textarea" v-model="input"  :rows="20"></el-input>
-      </el-form-item>
+        <markdown-editor :value="content" :highlight="true" @input="handleInput"></markdown-editor>
 
-      <!--<el-form-item label="文章内容">-->
-      <div v-html="compiledMarkdown"></div>
-      <!--</el-form-item>-->
+      </el-form-item>
 
 
       <el-form-item>
@@ -24,24 +21,24 @@
 </template>
 
 <script>
-  import _ from 'lodash';
-  import marked from 'marked';
+
   import api from '../../api/index'
+  import hljs from 'highlight.js';
+  window.hljs = hljs;
 
   export default {
     name: '',
+
     data() {
       return {
         title: '',
-        input: ''
+        input: '',
+        content:''
       }
     },
-    mounted() {
-    },
-    computed: {
-      compiledMarkdown: function () {
-        return marked(this.input, {sanitize: true})
-      }
+
+    created(){
+
     },
     methods: {
       onSubmit() {
@@ -55,12 +52,14 @@
           console.log(res)
         })
       },
+      handleInput(){}
 
     }
   }
 </script>
 
 <style lang="less">
+
   .article-edit {
     width: 100%;
     height: 100%;

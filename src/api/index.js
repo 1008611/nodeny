@@ -48,8 +48,14 @@ export default {
   getLoginOut(data) {
     return axios.post(LoginOut, qs.stringify(data))
   },
+  CheckAccount(data) {
+    return axios.post('/api/login/checkAccount', qs.stringify(data))
+  },
   Register(data) {
     return axios.post('/api/login/createAccount', qs.stringify(data))
+  },
+  GetLogin(data) {
+    return axios.post('/api/login/getLogin', qs.stringify(data))
   },
   GetAccount() {
     return axios.get('/api/login/getAccount')

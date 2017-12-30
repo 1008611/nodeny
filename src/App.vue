@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <m-header></m-header>
+    <!--<m-header></m-header>-->
     <router-view/>
   </div>
 </template>
@@ -13,6 +13,8 @@
     components: {
       mHeader,
     },
+    methods:{
+    }
   }
 </script>
 
@@ -23,10 +25,8 @@
   }
 
   #app {
-    /*background-color: #E9EAEC;*/
+    height: 100%;
     color: #333;
-    background-image: url("./assets/images/bg.jpg");
-    background-size: cover;
     /*清除浮动*/
     .clearfix {
       zoom: 1;

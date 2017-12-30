@@ -43,10 +43,7 @@
 
         index: 0,
         activePath: '/admin/basesales',
-        menuList: [
-//          {id:1,name:"AA",url:'ww'},
-//          {id:2,name:"BB",url:'ww'},
-        ]
+        menuList: []
 
       };
     },
@@ -64,7 +61,7 @@
       "$route": "routeChange",
       isOpenMenu(v) {
         console.log(v)
-        this.isCollapse=v
+        this.isCollapse = v
         if (!v) {
           this.maxWidth = '160px'
         } else {
@@ -76,7 +73,6 @@
     methods: {
       routeChange() {
         console.log(this.$route.path)
-//        this.activePath = this.$route.path
       },
       initData() {
         let self = this

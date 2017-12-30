@@ -4,13 +4,31 @@ const router = express.Router();
 
 /************** 创建(create) 读取(get) 更新(update) 删除(delete) **************/
 
+// 检查用户名是否存在
+router.post('/api/login/checkAccount', (req, res) => {
+  //查询是否应经存在
+  models.Login.findOne({account: req.body.name}, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      if (data == null || data == undefined) {
+        res.json({code: 200, data: '', msg: '可以使用该用户名'});
+      } else {
+        res.json({code: 200, data: data, msg: '该用户名已经存在'});
+      }
+    }
+  })
+
+});
+
 // 创建账号接口
 router.post('/api/login/createAccount', (req, res) => {
   // 这里的req.body能够使用就在index.js中引入了const bodyParser = require('body-parser')
   let newAccount = new models.Login({
-    account: req.body.account,
+    account: req.body.name,
     password: req.body.password
   });
+
   // 保存数据newAccount数据进mongoDB
   newAccount.save((err, data) => {
     if (err) {
@@ -19,15 +37,33 @@ router.post('/api/login/createAccount', (req, res) => {
       res.json({code: 200, data: data, msg: 'create cussess'});
     }
   });
+
+
 });
-// 获取已有账号接口
-router.get('/api/login/getAccount', (req, res) => {
+// 登录接口  数据库中进行查找
+router.post('/api/login/getLogin', (req, res) => {
+  // 通过模型去查找数据库
+  let loginData = {
+    account: req.body.name,
+    password: req.body.password
+  }
+  models.Login.find(loginData, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.json({code: 200, data: data, msg: 'login cussess'});
+    }
+  });
+});
+
+// 获取 所有的 注册人员信息
+router.post('/api/login/getAccount', (req, res) => {
   // 通过模型去查找数据库
   models.Login.find({}, (err, data) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data});
+      res.json({code: 200, data: data, msg: 'search cussess'});
     }
   });
 });
@@ -65,7 +101,7 @@ router.get('/api/admin/:article_id', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data,message:'获取成功'});
+      res.json({code: 200, data: data, message: '获取成功'});
     }
   });
 });
@@ -75,7 +111,7 @@ router.delete('/api/admin/:article_id', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data,message:'删除成功'});
+      res.json({code: 200, data: data, message: '删除成功'});
     }
   });
 });

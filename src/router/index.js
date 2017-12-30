@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import NotFoundComponent from '../components/frond/404.vue'
 import Index from '../pages/frond/index.vue'
 // admin
+import Login from '../pages/back/Login.vue'
 import Admin from '../pages/back/Admin.vue'
 import ArticleList from '../pages/back/ArticleList.vue'
 import ArticleEdit from '../pages/back/ArticleEdit.vue'
@@ -10,6 +11,7 @@ import ArticleEdit from '../pages/back/ArticleEdit.vue'
 import Blog from '../pages/frond/Blog.vue'
 import Images from '../pages/frond/Images.vue'
 import About from '../pages/frond/About.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +40,11 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
       path: '/admin',
