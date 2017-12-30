@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '../router/index'
 
 axios.defaults.withCredentials = true
-// axios.defaults.timeout = 100000
+axios.defaults.timeout = 10000
 
 
 // 添加请求拦截器

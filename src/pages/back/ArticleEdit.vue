@@ -1,12 +1,12 @@
 <template>
   <div class="article-edit">
     <el-form ref="form" label-width="80px" class="edit-form">
-      <el-form-item label="文章标题">
+      <el-form-item label="文章标题" class="article-title">
         <el-input v-model="title" size="mini"></el-input>
       </el-form-item>
 
-      <el-form-item label="文章内容">
-        <markdown-editor v-model="content" :configs="configs" style="height: 500px" :highlight="true"></markdown-editor>
+      <el-form-item label="文章内容" >
+        <markdown-editor v-model="content" :configs="configs"  :highlight="true"></markdown-editor>
 
       </el-form-item>
 
@@ -114,8 +114,9 @@
   .article-edit {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     background: #fff;
+
     .edit-form {
       margin-right: 20px;
     }
