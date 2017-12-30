@@ -4,6 +4,7 @@ import NotFoundComponent from '../components/frond/404.vue'
 import Index from '../pages/frond/index.vue'
 // admin
 import Login from '../pages/back/Login.vue'
+import Register from '../pages/back/Register.vue'
 import Admin from '../pages/back/Admin.vue'
 import ArticleList from '../pages/back/ArticleList.vue'
 import ArticleEdit from '../pages/back/ArticleEdit.vue'
@@ -47,6 +48,11 @@ export default new Router({
       component: Login
     },
     {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
       path: '/admin',
       name: 'admin',
       component: Admin,
@@ -54,10 +60,12 @@ export default new Router({
 
         {
           path: 'articleList',
+          name: 'articleList',
           component: ArticleList
         },
         {
           path: 'articleEdit',
+          name: 'articleEdit',
           component: ArticleEdit
         },
 

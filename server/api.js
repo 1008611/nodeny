@@ -1,6 +1,7 @@
 const models = require('./db');
 const express = require('express');
 const router = express.Router();
+const moment = require('moment')
 
 /************** 创建(create) 读取(get) 更新(update) 删除(delete) **************/
 
@@ -12,9 +13,9 @@ router.post('/api/login/checkAccount', (req, res) => {
       res.send(err);
     } else {
       if (data == null || data == undefined) {
-        res.json({code: 200, data: '', msg: '可以使用该用户名'});
+        res.json({code: 200, data: '', canUse: true, msg: '可以使用该用户名'});
       } else {
-        res.json({code: 200, data: data, msg: '该用户名已经存在'});
+        res.json({code: 200, data: data, canUse: false, msg: '该用户名已经存在'});
       }
     }
   })
@@ -34,7 +35,7 @@ router.post('/api/login/createAccount', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data, msg: 'create cussess'});
+      res.json({code: 200, data: data, success: true, msg: 'create cussess'});
     }
   });
 
@@ -51,7 +52,11 @@ router.post('/api/login/getLogin', (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data, msg: 'login cussess'});
+      if (data == '') {
+        res.json({code: 200, data: data, success: false, msg: 'login error'});
+      } else {
+        res.json({code: 200, data: data, success: true, msg: 'login success'});
+      }
     }
   });
 });
@@ -68,29 +73,54 @@ router.post('/api/login/getAccount', (req, res) => {
   });
 });
 
-// post 文章
+// post 发布文章
 router.post('/api/admin/article', (req, res) => {
-  let Article = new models.Articles({
-    title: req.body.title,
-    content: req.body.input,
-    state: req.body.state,
-  })
-  Article.save((err, data) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.json({code: 200, data: data});
+  // 首先判断 有没有ID （是不是更新文章）
+  let id = req.body.id
+  let content = req.body.content
+  let date = moment().format('YYYY-MM-DD HH:mm:ss ')
+  let Article
+  if (id) {
+    let updatestr = {
+      title: req.body.title,
+      content: content,
+      state: req.body.state,
+      subtitle: content.substr(0, 15) + '...'
     }
-  });
+    models.Articles.findByIdAndUpdate(id, updatestr,(err, data) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json({code: 200, data: data, success: true, msg: '发布成功'});
+      }
+    });
+  }else {
+    Article = new models.Articles({
+      title: req.body.title,
+      content: content,
+      state: req.body.state,
+      publishTime: date,
+      subtitle: content.substr(0, 15) + '...'
+    })
+    Article.save((err, data) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.json({code: 200, data: data, success: true, msg: '发布成功'});
+      }
+    });
+  }
+
+
 });
 
-// get 文章
+// get 获取所有的文章
 router.get('/api/admin/article', (req, res) => {
   models.Articles.find({}, (err, data) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({code: 200, data: data});
+      res.json({code: 200, data: data, msg: '获取成功'});
     }
   });
 });
@@ -105,7 +135,7 @@ router.get('/api/admin/:article_id', (req, res) => {
     }
   });
 });
-// 操作 文章
+// 操作 删除 文章
 router.delete('/api/admin/:article_id', (req, res) => {
   models.Articles.remove({_id: req.params.article_id}, (err, data) => {
     if (err) {

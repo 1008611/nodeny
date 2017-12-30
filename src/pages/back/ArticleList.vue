@@ -1,10 +1,36 @@
 <template>
   <div class="article-list">
-    <div v-for="(item,index) in articleList">
-      <div>{{item.title}}</div>
-      <el-button @click="openA(item._id)">查看</el-button>
-      <el-button @click="deleteA(item._id)">删除</el-button>
-    </div>
+
+    <el-table
+      :data="articleList"
+      style="width: 100%">
+      <el-table-column
+        prop="publishTime"
+        label="date"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="title"
+        label="title"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="subtitle"
+        label="content">
+      </el-table-column>
+      <el-table-column
+        fixed="right"
+        label="操作"
+        width="100">
+        <template slot-scope="scope">
+          <!--<el-button @click="watch(scope.row)" type="text" size="small">查看</el-button>-->
+          <el-button @click="deleteArticle(scope.row)" type="text" size="small">删除</el-button>
+          <el-button @click="toEditor(scope.row)" type="text" size="small">编辑</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+
+
   </div>
 </template>
 
@@ -15,34 +41,44 @@
     name: '',
     data() {
       return {
-        articleList: ''
+        articleList: []
       }
     },
     created() {
-      // this.initData()
+      this.initData()
     },
     methods: {
+      //获取文章列表
       initData() {
         let self = this
         api.GetArticle().then(res => {
           self.articleList = res.data.data
         })
       },
-      openA(id){
+      // //查看文章详情
+      // watch(row) {
+      //   console.log(row)
+      //   let self = this
+      //   api.OpenArticle(row._id).then(res => {
+      //     console.log(res)
+      //     self.initData()
+      //   })
+      // },
+      //删除文章
+      deleteArticle(row) {
         let self = this
-        api.OpenArticle(id).then(res => {
+        api.DeleteArticle(row._id).then(res => {
           console.log(res)
           self.initData()
         })
       },
-      deleteA(id){
-        let self = this
-        api.DeleteArticle(id).then(res => {
-          console.log(res)
-          self.initData()
-        })
+      // 去编辑页面
+      toEditor(row) {
+        let id = row._id
+        this.$router.push({path: '/admin/articleEdit', query: {id: id}});
       },
     }
+
   }
 </script>
 

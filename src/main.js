@@ -12,7 +12,9 @@ import 'normalize.css';
 import VueSimplemde from 'vue-simplemde'
 import 'simplemde/dist/simplemde.min.css'
 import 'highlight.js/styles/atom-one-dark.css'
+import moment from 'moment'
 
+Vue.prototype.moment = moment
 Vue.prototype.$axios = axios
 Vue.use(ElementUI)
 Vue.use(VueSimplemde)
