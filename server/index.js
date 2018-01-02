@@ -20,6 +20,15 @@ app.get('*', function(req, res) {
   const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
   res.send(html)
 })
+//允许跨域访问
+app.all('*',function (req, res, next) {
+  console.log(req,res)
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 // 监听8088端口
-app.listen(8088);
+app.listen(80);
 console.log('success listen…………');
