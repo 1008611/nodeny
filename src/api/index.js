@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../router/index'
 
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
 axios.defaults.timeout = 10000
 
 
@@ -35,42 +35,67 @@ axios.interceptors.response.use(
 let qs = require('qs');
 import {
   Api,
-  Login,
-  LoginOut,
-
 } from './resource'
 
 export default {
 
-  getLogin(data) {
-    return axios.post(Login, qs.stringify(data))
-  },
-  getLoginOut(data) {
-    return axios.post(LoginOut, qs.stringify(data))
-  },
   CheckAccount(data) {
-    return axios.post('/api/login/checkAccount', qs.stringify(data))
+    return axios.post(Api + 'login/checkAccount', qs.stringify(data))
   },
   Register(data) {
-    return axios.post('/api/login/createAccount', qs.stringify(data))
+    return axios.post(Api + 'login/createAccount', qs.stringify(data))
   },
   GetLogin(data) {
-    return axios.post('/api/login/getLogin', qs.stringify(data))
+    return axios.post(Api + 'login/getLogin', qs.stringify(data))
   },
   GetAccount() {
-    return axios.get('/api/login/getAccount')
+    return axios.get(Api + 'login/getAccount')
   },
   PostArticle(data) {
-    return axios.post('/api/admin/article', qs.stringify(data))
+    return axios.post(Api + 'admin/article', qs.stringify(data))
   },
   GetArticle(data) {
-    return axios.get('/api/admin/article')
+    return axios.get(Api + 'admin/article')
   },
   OpenArticle(data) {
-    return axios.get(`/api/admin/${data}`)
+    return axios.get(Api + `admin/${data}`)
   },
   DeleteArticle(data) {
-    return axios.delete(`/api/admin/${data}`)
+    return axios.delete(Api + `admin/${data}`)
   },
 
 }
+// export default {
+//
+//   getLogin(data) {
+//     return axios.post(Login, qs.stringify(data))
+//   },
+//   getLoginOut(data) {
+//     return axios.post(LoginOut, qs.stringify(data))
+//   },
+//   CheckAccount(data) {
+//     return axios.post('/api/login/checkAccount', qs.stringify(data))
+//   },
+//   Register(data) {
+//     return axios.post('/api/login/createAccount', qs.stringify(data))
+//   },
+//   GetLogin(data) {
+//     return axios.post('/api/login/getLogin', qs.stringify(data))
+//   },
+//   GetAccount() {
+//     return axios.get('/api/login/getAccount')
+//   },
+//   PostArticle(data) {
+//     return axios.post('/api/admin/article', qs.stringify(data))
+//   },
+//   GetArticle(data) {
+//     return axios.get('/api/admin/article')
+//   },
+//   OpenArticle(data) {
+//     return axios.get(`/api/admin/${data}`)
+//   },
+//   DeleteArticle(data) {
+//     return axios.delete(`/api/admin/${data}`)
+//   },
+//
+// }

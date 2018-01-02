@@ -88,7 +88,7 @@
   .login {
     height: 100%;
     width: 100%;
-    /*background: url("../../assets/images/login2.jpg") no-repeat center center;*/
+    background: url("../../assets/images/login2.jpg") no-repeat center center;
     background-size: cover;
     opacity: 0.9;
 
