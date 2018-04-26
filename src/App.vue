@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!--<m-header></m-header>-->
+    <m-header v-show="$route.meta.showHeader"></m-header>
     <router-view/>
   </div>
 </template>
@@ -13,8 +13,27 @@
     components: {
       mHeader,
     },
-    methods:{
-    }
+    data() {
+      return {
+        showHeader: true,
+      }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    methods: {
+      handleScroll() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        if (scrollTop > 80) {
+          this.showHeader = false
+        } else {
+          this.showHeader = true
+        }
+      },
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll)
+    },
   }
 </script>
 

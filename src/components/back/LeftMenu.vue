@@ -21,6 +21,10 @@
             <i class="el-icon-setting"></i>
             <span slot="title">发布文章</span>
           </el-menu-item>
+          <el-menu-item index="/admin/apiList">
+            <i class="el-icon-setting"></i>
+            <span slot="title">接口管理</span>
+          </el-menu-item>
 
         </el-menu>
       </div>

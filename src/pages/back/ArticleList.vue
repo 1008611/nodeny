@@ -37,7 +37,7 @@
         </el-table-column>
       </el-table>
     </div>
-    <div class="block page" >
+    <div class="block page">
       <el-pagination
         layout="total,prev, pager, next"
         @size-change="handleSizeChange"
@@ -63,7 +63,7 @@
         rarticleList: [],
         loading: false,
 
-        pageSize: 2,
+        pageSize: 8,
         pageIndex: 1,
         dataCount: 0,
       }
@@ -77,8 +77,8 @@
         let self = this
         self.loading = true
         api.GetArticle().then(res => {
-          let data =res.data.data
-          self.rarticleList =  data
+          let data = res.data.data
+          self.rarticleList = data
           self.loading = false
           self.dataCount = data.length
           self.pageIndex = 1

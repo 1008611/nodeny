@@ -1,8 +1,6 @@
 <template>
   <div class="index">
-    <v-title>nodeny</v-title>
-
-
+    <v-title>weal8</v-title>
 
     <div class="m_container">
       <el-container class="mt30" >
@@ -13,30 +11,21 @@
         <el-footer>Footer</el-footer>
       </el-container>
     </div>
-    <!--<m-editor></m-editor>-->
-    <!--<el-input v-model="name" placeholder="请输入内容"></el-input>-->
-    <!--<el-input v-model="pwd" placeholder="请输入内容"></el-input>-->
-    <!--<el-button @click="submit">注册</el-button>-->
-    <!--<el-button @click="find">查找</el-button>-->
 
   </div>
 </template>
 
 <script>
   import vTitle from '../../components/Title.vue'
-  import mEditor from '../../components/frond/Editor.vue'
   import api from '../../api/index'
 
   export default {
     name: '',
     components: {
       vTitle,
-      mEditor
     },
     data() {
       return {
-        name: '',
-        pwd: '',
       }
     },
     methods: {
@@ -63,7 +52,9 @@
 <style lang="less">
   .index {
     height: 2200px;
+    width: 100%;
     overflow: scroll;
+    background: #c1cad8;
     .mt30 {
       margin-top: 30px;
       border: 1px solid #3a8ee6;

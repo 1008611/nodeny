@@ -32,6 +32,7 @@
         content: '',
         id: '',
         configs: {
+          spellChecker: false, // 禁用拼写检查
           toolbar: ['bold', 'italic', 'heading', 'code', 'quote', 'link', 'image', 'preview', 'side-by-side', 'fullscreen',
             {
               name: 'publish',

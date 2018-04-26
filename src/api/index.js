@@ -64,6 +64,21 @@ export default {
     return axios.delete(Api + `admin/${data}`)
   },
 
+  getApi(data) {
+    return axios.get(Api + `admin/${data}`)
+  },
+  getSplash(data){
+    return axios.get('https://www.apiopen.top/weatherApi?city='+data)
+  },
+  getOne(){
+    return axios.get(Api + `one`)
+  },
+  getImages(){
+    return axios.get('https://www.apiopen.top/meituApi?page=1')
+  },
+  getJock(data){
+    return axios.get(`https://www.apiopen.top/satinGodApi?type=1&page=${data}` )
+  },
 }
 // export default {
 //

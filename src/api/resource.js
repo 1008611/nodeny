@@ -1,6 +1,4 @@
-import {
-  API_ROOT,
-} from './config.js'
+let API_ROOT = window.configs.API_ROOT
 
 var apiHYZ = {
   Login: 'user/login/',
