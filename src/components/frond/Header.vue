@@ -28,6 +28,8 @@
         <el-menu-item index="about">About</el-menu-item>
 
         <el-menu-item index="jock">Jock</el-menu-item>
+
+        <el-menu-item index="laifu">Laifu</el-menu-item>
       </el-menu>
     </div>
   </div>

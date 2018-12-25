@@ -16,6 +16,7 @@ import BlogDetail from '../pages/frond/BlogDetail.vue'
 import Images from '../pages/frond/Images.vue'
 import About from '../pages/frond/About.vue'
 import Jock from '../pages/frond/Jock.vue'
+import Laifu from '../pages/frond/Laifu.vue'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },   {
+      path: '/laifu',
+      name: 'laifu',
+      component: Laifu,
+      meta: {showHeader: true}
     },
     {
       path: '/register',

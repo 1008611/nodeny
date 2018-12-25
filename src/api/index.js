@@ -35,6 +35,7 @@ axios.interceptors.response.use(
 let qs = require('qs');
 import {
   Api,
+  Api2
 } from './resource'
 
 export default {
@@ -67,17 +68,23 @@ export default {
   getApi(data) {
     return axios.get(Api + `admin/${data}`)
   },
-  getSplash(data){
-    return axios.get('https://www.apiopen.top/weatherApi?city='+data)
+  getSplash(data) {
+    return axios.get('https://www.apiopen.top/weatherApi?city=' + data)
   },
-  getOne(){
+  getOne() {
     return axios.get(Api + `one`)
   },
-  getImages(){
+  getImages() {
     return axios.get('https://www.apiopen.top/meituApi?page=1')
   },
-  getJock(data){
-    return axios.get(`https://www.apiopen.top/satinGodApi?type=1&page=${data}` )
+  getJock(data) {
+    return axios.get(`https://www.apiopen.top/satinGodApi?type=1&page=${data}`)
+  },
+  getLaifu(data) {
+    return axios.get(Api2 + `laifu`)
+  },
+  getPost(type, data) {
+    return axios.get(`https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=${data}`)
   },
 }
 // export default {
